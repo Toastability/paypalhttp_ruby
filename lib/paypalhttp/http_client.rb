@@ -106,7 +106,8 @@ module PayPalHttp
 
       if status_code >= 200 and status_code < 300
         return obj
-      elsif
+      else
+        puts "_parse response error", obj.try(:as_json)
         raise HttpError.new(obj.status_code, obj.result, obj.headers)
       end
     end
